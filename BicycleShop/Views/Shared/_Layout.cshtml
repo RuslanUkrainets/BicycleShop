@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] BicycleShop</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">BicycleShop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <a class="nav-link active" asp-action="Index" asp-controller="Home" aria-current="page">Home</a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a class="nav-link active" asp-action="ChangePassword" asp-controller="Account">Change Password</a>
+                            @if(User.IsInRole("Admin"))
+                            {
+                                <a class="nav-link active" asp-action="Index" asp-controller="Admin">Admin</a>
+                                <a class="nav-link active" asp-action="Create" asp-controller="Admin">Create Item</a>
+                                <a class="nav-link active" asp-action="ChangeUser" asp-controller="Account">Change User</a>
+
+                            }
+                            
+                            @if(User.IsInRole("SuperAdmin"))
+                            {
+                                <a class="nav-link active" asp-action="Index" asp-controller="Roles">Roles</a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            @if(User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Cart" asp-action="Index">
+                  <img style="width: 30px; height: 30px;" class="mx-3" src="cart.png"/>
+                </a>
+                <div class="d-flex align-items-center">
+                    <span class="text-nowrap" style="color: yellow">Welcome, @User.Identity.Name</span>
+                    <a asp-action="Logout" asp-controller="Account" class="btn btn-primary mx-3">Logout</a>
+                </div>
+            }
+            else
+            {
+                <div class="d-flex align-items-center">
+                    <a asp-action="Login" asp-controller="Account" class="btn btn-primary">Login</a>
+                    <a asp-action="Register" asp-controller="Account" class="btn btn-primary mx-3">Register</a>
+                </div>
+            }
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

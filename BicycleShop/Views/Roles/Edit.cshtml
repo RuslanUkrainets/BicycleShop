@@ -1,0 +1,26 @@
+﻿@model BicycleShop.Models.ViewModels.ChangeRoleViewModel
+@{
+}
+
+<div class="col-lg-5 mx-auto">
+	<h3>Changing roles for @Model.UserEmail</h3>
+	<form asp-action="Edit" method="post">
+		@Html.AntiForgeryToken()
+		<div class="form-group">
+			@foreach (var role in Model.Roles)
+			{
+				bool? result = Model.UserRoles.Contains(role.Name) ? true : false;
+				<input type="checkbox" name="roles" id="@role.Name" checked=@result value="@role.Name"/>
+				@Html.Label(role.Name, $"{role.Name}")		
+				@if(result.Value)
+				{
+					<span class=mx-2>+</span>
+				}
+				<br />
+			}
+			@Html.HiddenFor(x => x.UserId)
+		</div>
+		<input type="submit" value="Save" class="btn btn-primary" />
+	</form>
+	
+</div>

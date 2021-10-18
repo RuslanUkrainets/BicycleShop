@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BicycleShop.Models.User>
+
+@{
+}
+
+<ul class="nav flex-column nav-enhanced">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" asp-action="Index", asp-controller="Roles">Change Roles</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" asp-action="Create" asp-controller="Roles">Create Role</a>
+  </li>
+</ul>
+
+<div class="col-lg-5 mx-auto">
+	<table class="table table-dark table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Email</th>
+				<th scope="col" style="width: 50">+</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var user in Model)
+			{
+				<tr>
+					<td>@user.Email</td>
+					<td>
+						<a class="btn btn-warning" asp-action="Edit" asp-controller="Roles" asp-route-userId="@user.Id">Edit</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

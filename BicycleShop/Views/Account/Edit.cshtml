@@ -1,0 +1,34 @@
+﻿@model BicycleShop.Models.ViewModels.ChangeUserViewModel
+@{
+}
+
+<h2 class="text-center">Edit @Model.Email</h2>
+
+<div class="col-lg-5 mx-auto">
+	<form asp-action="Edit" asp-controller="Account" asp-antiforgery="true">
+		<div asp-validation-summary="ModelOnly"></div>
+		<div class="mb-3">
+			@Html.LabelFor(x => x.Email, new { @class="form-label"})
+			@Html.TextBoxFor(x => x.Email, new { @class="form-control"})
+			@Html.ValidationMessageFor(x => x.Email)
+		</div>
+		<div class="mb-3">
+			@Html.LabelFor(x => x.UserName, new { @class="form-label"})
+			@Html.TextBoxFor(x => x.UserName, new { @class="form-control"})
+			@Html.ValidationMessageFor(x => x.UserName)
+		</div>
+		<div class="mb-3">
+			@Html.LabelFor(x => x.Year, new { @class="form-label"})
+			@Html.TextBoxFor(x => x.Year, new { @class="form-control"})
+			@Html.ValidationMessageFor(x => x.Year)
+		</div>
+		<div class="mb-3">
+			@Html.LabelFor(x => x.Password, new { @class="form-label"})
+			@Html.PasswordFor(x => x.Password, new { @class="form-control"})
+			@Html.ValidationMessageFor(x => x.Password)
+		</div>
+		@Html.HiddenFor(x => x.UserId)
+		<input type="submit" value="Edit" class="btn btn-primary"/>
+	</form>
+
+</div>

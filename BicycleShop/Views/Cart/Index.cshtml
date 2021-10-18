@@ -1,0 +1,47 @@
+﻿@model BicycleShop.Models.ViewModels.CartIndexViewModel
+@{
+}
+
+<h2 class="text-center">The Cart</h2>
+
+<div>
+    <table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Quantity</th>
+      <th scope="col">Title</th>
+      <th scope="col">Color</th>
+      <th scope="col">Price</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var line in Model.Cart.Lines)
+    {
+        <tr>
+            <td>@line.Quantity</td>
+            <td>@line.Bicycle.Name</td>
+            <td>@line.Bicycle.Color</td>
+            <td>@line.Bicycle.Price</td>
+            <td>@(line.Quantity * line.Bicycle.Price)</td>
+            <td>
+                <a class="btn btn-primary" asp-action="RemoveFromCart" asp-controller="Cart" asp-route-id="@line.Bicycle.Id" asp-route-returnUrl="@Model.ReturnUrl">Remove</a>
+            </td>
+
+        </tr>        
+    }
+  </tbody>
+  <tfoot>
+      <tr>
+          <td>Total: </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>@Model.Cart.Calculate()</td>
+      </tr>
+  </tfoot>
+</table>
+<a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
+</div>

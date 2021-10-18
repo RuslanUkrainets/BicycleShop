@@ -1,0 +1,36 @@
+﻿@model BicycleShop.Models.ViewModels.RegisterViewModel
+@{
+}
+
+<h2 class="text-center">Register</h2>
+
+<div class="col-lg-4 mx-auto">
+	<form asp-action="Register" asp-controller="Account" asp-antiforgery="true">
+		<div asp-validation-summary="ModelOnly"></div>
+		<div class="mb-3">
+			@Html.LabelFor(x => x.Email, new { @class="form-label"})
+			@Html.TextBoxFor(x => x.Email, new { @class="form-control"})
+			@Html.ValidationMessageFor(x => x.Email)
+		</div>
+		<div class="mb-3">
+			@Html.LabelFor(x => x.Year, new { @class="form-label"})
+			@Html.TextBoxFor(x => x.Year, new { @class="form-control"})
+			@Html.ValidationMessageFor(x => x.Year)
+		</div>
+		<div class="mb-3">
+			@Html.LabelFor(x => x.Password, new { @class="form-label"})
+			@Html.PasswordFor(x => x.Password, new { @class="form-control"})
+			@Html.ValidationMessageFor(x => x.Password)
+		</div>
+		<div class="mb-3">
+			@Html.LabelFor(x => x.ConfirmPassword, new { @class="form-label"})
+			@Html.PasswordFor(x => x.ConfirmPassword, new { @class="form-control"})
+			@Html.ValidationMessageFor(x => x.ConfirmPassword)
+		</div>
+		<input type="submit" value="Register" class="btn btn-primary"/>
+	</form>
+
+</div>
+
+
+

@@ -1,0 +1,47 @@
+﻿@model BicycleShop.Models.Bicycle
+@{
+
+}
+
+<div class="col-lg-4 mx-auto">
+	<form method="post" class="needs-validation">
+		<div class="mb-3">
+		  @Html.LabelFor(x => x.Name, new { @class="form-label"})
+		  @Html.TextBoxFor(x => x.Name, new { @class="form-control"})
+		  @Html.ValidationMessageFor(x => x.Name)
+		</div>
+		<div class="mb-3">
+		  @Html.LabelFor(x => x.WheelDiameter, new { @class="form-label"})
+		  @Html.TextBoxFor(x => x.WheelDiameter, new { @class="form-control"})
+		  @Html.ValidationMessageFor(x => x.WheelDiameter)
+		</div>
+		<div class="mb-3">
+		  @Html.LabelFor(x => x.Color, new { @class="form-label"})
+		  @Html.TextBoxFor(x => x.Color, new { @class="form-control"})
+		  @Html.ValidationMessageFor(x => x.Color)
+		</div>
+		<div class="mb-3">
+		  @Html.LabelFor(x => x.Chain, new { @class="form-label"})
+		  @Html.TextBoxFor(x => x.Chain, new { @class="form-control"})
+		  @Html.ValidationMessageFor(x => x.Chain)
+		</div>
+		<div class="mb-3">
+		  @Html.LabelFor(x => x.Weight, new { @class="form-label"})
+		  @Html.TextBoxFor(x => x.Weight, new { @class="form-control"})
+		  @Html.ValidationMessageFor(x => x.Weight)
+		</div>
+		<div class="mb-3">
+		  @Html.LabelFor(x => x.Year, new { @class="form-label"})
+		  @Html.TextBoxFor(x => x.Year, new { @class="form-control"})
+		  @Html.ValidationMessageFor(x => x.Year)
+		</div>
+		<div class="mb-3">
+		  @Html.LabelFor(x => x.Price, new { @class="form-label"})
+		  @Html.TextBoxFor(x => x.Price, new { @class="form-control"})
+		  @Html.ValidationMessageFor(x => x.Price)
+		</div>
+		@Html.HiddenFor(x => x.Id)
+		<input type="submit" class="btn btn-primary" value="Submit"/>
+	</form>
+</div>
+
