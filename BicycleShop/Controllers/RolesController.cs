@@ -79,5 +79,28 @@ namespace BicycleShop.Controllers
             }
             return View(name);
         }
+
+        public IActionResult Delete()
+        {
+            var roles = _roleManager.Roles;
+            return View(roles);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            var result = await _roleManager.DeleteAsync(role);
+            if(result.Succeeded)
+                return RedirectToAction("Delete");
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            return RedirectToAction("Delete");
+        }
     }
 }
