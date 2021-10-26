@@ -21,6 +21,10 @@ $('#search').on('click', function () {
 $('#pages').children().on('click', function () {
     page = $('#Page').val();
 
+    if (year == undefined) {
+        year = "all"
+    }
+
     switch (this.innerText) {
         case "Next":
             page++

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title></title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="https://www.google.com">API</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="addItem.html">Add</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="col-lg-4 mx-auto">
+        <form method="post" id="addForm" name="addForm" action="/Api/bicycles">
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="Name" name="Name"  placeholder="Name">
+            </div>
+            <div class="mb-3">
+                <label for="WheelDiameter" class="form-label">Wheel Diameter</label>
+                <input type="text" class="form-control" id="WheelDiameter" name="WheelDiameter"  placeholder="Whee lDiameter">
+            </div>
+            <div class="mb-3">
+                <label for="Color" class="form-label">Color</label>
+                <input type="text" class="form-control" id="Color" name="Color"  placeholder="Color">
+            </div>
+            <div class="mb-3">
+                <label for="Chain" class="form-label">Chain</label>
+                <input type="text" class="form-control" id="Chain" name="Chain" placeholder="Chain">
+            </div>
+            <div class="mb-3">
+                <label for="Weight" class="form-label">Weight</label>
+                <input type="text" class="form-control" id="Weight" name="Weight" placeholder="Weight">
+            </div>
+            <div class="mb-3">
+                <label for="Year" class="form-label">Year</label>
+                <input type="text" class="form-control" id="Year" name="Year" placeholder="Year">
+            </div>
+            <div class="mb-3">
+                <label for="Price" class="form-label">Price</label>
+                <input type="text" class="form-control" id="Price" name="Price" placeholder="Price">
+            </div>
+            <input type="hidden"/>
+            <!--<button type="button" class="btn btn-primary" id="addItem">Submit</button>-->
+            <input type="submit" id="addItem" class="btn btn-primary"/>
+        </form>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
