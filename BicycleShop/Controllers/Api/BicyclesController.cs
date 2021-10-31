@@ -1,5 +1,7 @@
 ﻿using BicycleShop.Data;
 using BicycleShop.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -8,6 +10,7 @@ using System.Threading.Tasks;
 namespace BicycleShop.Controllers.Api
 {
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     public class BicyclesController : Controller
     {
@@ -31,7 +34,7 @@ namespace BicycleShop.Controllers.Api
         }
 
         [HttpPost]
-        public async Task<ActionResult<Bicycle>> Post([FromForm] Bicycle bicycle)
+        public async Task<ActionResult<Bicycle>> Post(Bicycle bicycle)
         {            
             _context.Bicycles.Add(bicycle);
             await _context.SaveChangesAsync();
